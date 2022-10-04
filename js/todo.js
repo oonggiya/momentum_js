@@ -9,7 +9,7 @@ function deleteToDo(event) {
 }
 
 const TODOS_KEY = "todos";
-const toDos = [];
+let toDos = [];
 
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
@@ -47,6 +47,6 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if (savedToDos !== null) {
     const parsedToDos = JSON.parse(savedToDos);
-    parsedToDos.forEach((item) =>
-        console.log("this is the turn of", item));
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintToDo);
 }
